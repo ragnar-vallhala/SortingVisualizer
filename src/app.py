@@ -10,9 +10,9 @@ import threading
 from tkinter import ttk
 
 
-size=10
 
-arr = [randint(1,100) for i in range(size)]
+size_user = 10
+arr = [randint(1,100) for i in range(int(size_user))]
 
 
 def animate(i):
@@ -69,7 +69,7 @@ def start_sorting():
 
 def reinitialize():
     global arr
-    arr = [randint(1,100) for i in range(size)]
+    arr = [randint(1,1000) for i in range(int(size_user.get()))]
     
 
 root = tk.Tk()
@@ -86,6 +86,10 @@ selected_algorithm = tk.StringVar(value=options[0])
 dropdown = ttk.Combobox(root, textvariable=selected_algorithm, values=options)
 dropdown.pack()
 
+size_user = tk.StringVar(value='10')
+size_option=['10','20','50','100','200','500']
+dropdown_size = ttk.Combobox(root, textvariable=size_user, values=size_option)
+dropdown_size.pack()
 
 fig, ax = plt.subplots()
 canvas = FigureCanvasTkAgg(fig, master=root)
